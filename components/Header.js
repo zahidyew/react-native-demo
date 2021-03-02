@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
    header: {
       height: 60,
       padding: 15,
-      backgroundColor: 'purple',
+      backgroundColor: 'black',
    },
    text: {
       fontSize: 23,

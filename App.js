@@ -1,64 +1,30 @@
-import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-  ToastAndroid,
-} from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Provider as PaperProvider, DefaultTheme, DarkTheme } from 'react-native-paper';
+import HomeScreen from './components/HomeScreen'
+import WeatherScreen from './components/weather/WeatherScreen'
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Header from './components/Header'
+const Stack = createStackNavigator();
 
 const App = () => {
-  const [num, setNum] = useState(0);
-
-  const clickedBtn = () => {
-    setNum(num + 1);
-    ToastAndroid.show(
-      `Clicked ${num + 1} of times.`,
-      ToastAndroid.SHORT
-    )
-  }
-
   return (
-    <>
-      <Header />
-      <View style={styles.container}>
-        <Text> {num} </Text>
-        <View style={styles.btnContainer}>
-          <Button
-            title="Counter"
-            onPress={clickedBtn}
+    <PaperProvider theme={DefaultTheme}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="DemoApp"
+            component={HomeScreen}
           />
-        </View>
-        <View style={styles.btnContainer}>
-          <Button
-            title="Get Weather"
+          <Stack.Screen
+            name="Weather"
+            component={WeatherScreen}
           />
-        </View>
-        <View style={styles.btnContainer}>
-          <Button
-            title="Notepad"
-          />
-        </View>
-      </View>
-    </>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  btnContainer: {
-    padding: 8,
-  }
-});
 
 export default App;
