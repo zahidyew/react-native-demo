@@ -24,13 +24,13 @@ const HomeScreen = ({navigation}) => {
     <>
       {/* <Header /> */}
       <View style={styles.container}>
-        <Text> {num} </Text>
+        {/* <Text> {num} </Text>
         <View style={styles.btnContainer}>
           <Button
             title="Counter"
             onPress={clickedBtn}
           />
-        </View>
+        </View> */}
         <View style={styles.btnContainer}>
           <Button
             title="Get Weather"
@@ -39,7 +39,8 @@ const HomeScreen = ({navigation}) => {
         </View>
         <View style={styles.btnContainer}>
           <Button
-            title="Notepad"
+            title="Waktu Solat"
+            onPress={() => navigation.navigate('WaktuSolat')}
           />
         </View>
       </View>
